@@ -24,8 +24,6 @@ help.push "options:"
 help.push "  -s, --silent   Silence stdout and stderr", "  -h, --help     Help", ""
 help = help.join '\n'
 
-
-
 # Show help prompt if requested or if the incorrect usage options are supplied
 if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'undefined')
   console.log help
@@ -35,5 +33,5 @@ if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'unde
 xp[argv._[0]].exec argv, (err, result) -> 
   if err
     console.log('ERROR:'.red.bold + ' ' + err.message.grey)
-  
+
   console.log(result);
