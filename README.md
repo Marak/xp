@@ -35,6 +35,13 @@
     xp loc ../
     xp loc ./foo
 
+## ws - White space / empty line removal 
+
+    xp ws [glob]
+    xp ws .
+    xp ws ../
+    xp ws ./foo
+
 
 ## Authors
 
