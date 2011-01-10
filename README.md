@@ -3,7 +3,7 @@
 
 #  INSTALLATION
   npm install xp
-  
+
 #  USAGE
     xp [tool] [options]
 
@@ -13,7 +13,6 @@
     xp -help
     xp --help
 
-
 # TOOLS
 
 ## pair - Pair Programing tools for source control commit messages
@@ -22,7 +21,6 @@
 
     xp pair nr nk
 ( pairs are currently hard-coded in pair.coffee)
-
 
 ### Reset to default user
 
@@ -41,7 +39,6 @@
     xp ws .
     xp ws ../
     xp ws ./foo
-
 
 ## Authors
 

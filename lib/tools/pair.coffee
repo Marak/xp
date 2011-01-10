@@ -13,18 +13,18 @@ exports.exec = (options) ->
 
   fs.stat path.join(process.cwd(), '.git'), (error, stats) ->
     throw '.git found but not a directory' unless stats.isDirectory()
-  
+
     authors = new Array
-  
+
     for initials in options._[1...]
       authors.push CONFIG.AUTHORS[initials] 
-  
+
     author = authors.join ' and '
-  
+
     end = ->
       exec 'git config --get-regexp user.*', (error, stdout, stderr) ->
         console.log stdout
-  
+
     if authors.length > 1
       exec """git config user.name '#{author}'""", ->
         exec """git config user.email '#{CONFIG.EMAIL}'""", ->

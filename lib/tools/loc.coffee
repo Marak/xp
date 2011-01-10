@@ -7,7 +7,7 @@ fs   = require 'fs'
 exports.exec = (options, callback) ->
   line_count = 0
   file_count = 0
-  
+
   # Cheating a bit for the async iteration here
   for glob in options._[1...]
     files = util.paths glob
