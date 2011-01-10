@@ -1,5 +1,5 @@
 # xp
-## an agile development tool built in CoffeeScript and node.js
+## a command line agile development tool built in CoffeeScript and node.js
 
 
 #  Usage
