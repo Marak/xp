@@ -1,5 +1,4 @@
 #!/usr/bin/env coffee
-util = require 'util'
 eyes = require 'eyes'
 xp = require '../lib/xp'
 
@@ -36,3 +35,5 @@ if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'unde
 xp[argv._[0]].exec argv, (err, result) -> 
   if err
     console.log('ERROR:'.red.bold + ' ' + err.message.grey)
+  
+  console.log(result);
