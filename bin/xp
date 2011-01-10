@@ -28,7 +28,7 @@ help = help.join '\n'
 
 
 # Show help prompt if requested or if the incorrect usage options are supplied
-if (argv.h || argv.help || (argv._.length == 0))
+if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'undefined')
   console.log help
   return
 

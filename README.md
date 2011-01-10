@@ -1,4 +1,4 @@
 # Usage
     xp
 
-    xp nr nk
+    xp pair nr nk
