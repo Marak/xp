@@ -14,11 +14,21 @@
     xp --help
 
 
-## Setting up Pair Programmers
+# TOOLS
+
+## pair - Pair Programing tools for source control commit messages
+
+### Set Pair Programming team
 
     xp pair nr nk
+( pairs are currently hard-coded in pair.coffee)
 
-## Getting Lines of Code
+
+### Reset to default user
+
+    xp pair
+
+## loc - Lines of Code
 
     xp loc [glob]
     xp loc .
