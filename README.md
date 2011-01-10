@@ -1,6 +1,8 @@
 # xp
 ## a command line agile development tool built in CoffeeScript and node.js
 
+# Warning: This is unreleased software.
+
 #  INSTALLATION
   npm install xp
 
