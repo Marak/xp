@@ -36,6 +36,7 @@
   
   dependencies:
     'coffee-script': '>= 1.0.0'
+    'optimist': '>= 0.1.3'
     
   engines:
     node: '>= 0.3.4'

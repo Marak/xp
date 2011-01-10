@@ -1,35 +1,38 @@
 #!/usr/bin/env coffee
-path = require 'path'
-fs = require 'fs'
-{exec} = require 'child_process'
+util = require 'util'
+eyes = require 'eyes'
+xp = require '../lib/xp'
 
-CONFIG =
-  EMAIL: 'xp@feistystudios.com'
+# parse command line arguments with optimist
+argv = (require 'optimist').argv
 
-  AUTHORS:
-    'nk': 'Nicholas Kinsey'
-    'nr': 'Nathan Rashleigh'
-    'bs': 'Brendan Scarvell'
+# load xp tools
+tools = xp.loadTools()
+help  = []
+usage = ''
 
-fs.stat path.join(process.cwd(), '.git'), (error, stats) ->
-  throw '.git found but not a directory' unless stats.isDirectory()
-  
-  authors = new Array
-  
-  for initials in process.argv[2...]
-    authors.push CONFIG.AUTHORS[initials] 
-  
-  author = authors.join ' and '
-  
-  end = ->
-    exec 'git config --get-regexp user.*', (error, stdout, stderr) ->
-      console.log stdout
-  
-  if authors.length > 1
-    exec """git config user.name '#{author}'""", ->
-      exec """git config user.email '#{CONFIG.EMAIL}'""", ->
-        end()
-  else
-    exec """git config --unset user.name""", ->
-      exec """git config --unset user.email""", ->
-        end()
+tools.forEach (tool, i) -> 
+  usage += ' ' + tool + " |"
+
+usage = usage.substr(0,usage.length-1)
+
+# generate help based on argv._
+
+help.push "usage: xp ["+usage+"] [ options ]"
+help.push "options:"
+
+# generate default help 
+help.push "  -s, --silent   Silence stdout and stderr", "  -h, --help     Help", ""
+help = help.join '\n'
+
+
+
+# Show help prompt if requested or if the incorrect usage options are supplied
+if (argv.h || argv.help || (argv._.length == 0))
+  console.log help
+  return
+
+# execute tool
+xp[argv._[0]].exec argv, (err, result) -> 
+  if err
+    console.log('ERROR:'.red.bold + ' ' + err.message.grey)
