@@ -2,7 +2,7 @@ fs = require 'fs'
 path = require 'path'
 {exec} = require 'child_process'
 
-exports.exec = (authors) ->
+exports.exec = (options) ->
   CONFIG =
     EMAIL: 'xp@feistystudios.com'
 
@@ -16,7 +16,7 @@ exports.exec = (authors) ->
   
     authors = new Array
   
-    for initials in process.argv[2...]
+    for initials in options._[1...]
       authors.push CONFIG.AUTHORS[initials] 
   
     author = authors.join ' and '
