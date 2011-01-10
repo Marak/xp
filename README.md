@@ -1,8 +1,10 @@
 # xp
 ## a command line agile development tool built in CoffeeScript and node.js
 
-
-#  Usage
+#  INSTALLATION
+  npm install xp
+  
+#  USAGE
     xp [tool] [options]
 
 ## Getting Help
