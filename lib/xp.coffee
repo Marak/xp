@@ -1,5 +1,5 @@
 util     = require './utils' 
-toolPath = './lib/tools'
+toolPath = __dirname + '/tools'
 eyes     = require 'eyes'
 
 exports.loadTools = ->
@@ -10,3 +10,4 @@ exports.loadTools = ->
     tools[i] = v
     exports[v] = require './tools/' + v
   return tools
+  

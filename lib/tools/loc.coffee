@@ -8,6 +8,9 @@ exports.exec = (options, callback) ->
   line_count = 0
   file_count = 0
 
+  if options._.length == 1
+    callback({ message: "File name, directory path, or glob is required"});
+
   # Cheating a bit for the async iteration here
   for glob in options._[1...]
     files = util.paths glob
@@ -24,4 +27,22 @@ exports.exec = (options, callback) ->
           return
         line_count += data.toString().split('\n').length
         if file_count == 0
-          callback(null, line_count);
+          callback(null, {
+            "Lines": line_count,
+            "Files": util.paths(glob).length
+          });
+
+exports.docs = () ->
+  doc = []
+  doc.push 'determines the amount of lines of code in files'.grey
+  return doc
+
+exports.usage = () ->
+  usage = []
+  usage.push '  xp' + ' loc'.cyan + ' .'.grey
+  usage.push '  xp' + ' loc'.cyan + ' /path/to/file.txt'.grey
+  usage.push '  xp' + ' loc'.cyan + ' /path/to/dir/'.grey
+  usage.push '  xp' + ' loc'.cyan + ' /path/to/dir/*.txt'.grey
+  usage.push ''
+  return usage
+  

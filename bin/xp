@@ -1,6 +1,9 @@
 #!/usr/bin/env coffee
+
 eyes = require 'eyes'
-xp = require '../lib/xp'
+xp     = require '../lib/xp'
+colors = require 'colors'
+utils  = require '../lib/utils'
 
 # parse command line arguments with optimist
 argv = (require 'optimist').argv
@@ -10,18 +13,74 @@ tools = xp.loadTools()
 help  = []
 usage = ''
 
-tools.forEach (tool, i) -> 
-  usage += ' ' + tool + " |"
+chars = {
+    'top': '━'
+  , 'top-mid': '┳'
+  , 'top-left': '┏'
+  , 'top-right': '┓'
+  , 'bottom': '━'
+  , 'bottom-mid': '┻'
+  , 'bottom-left': '┗' 
+  , 'bottom-right': '┛'
+  , 'left': '┃'
+  , 'left-mid': '┣'
+  , 'mid': '━'
+  , 'mid-mid': '╋'
+  , 'right': '┃'
+  , 'right-mid': '┫'
+}
 
-usage = usage.substr(0,usage.length-1)
+width = 58
+padding = ''
+hr = ''
+
+for num in [1..width]
+  hr      +=  "━"
+  padding += " "
+
+tools.forEach (tool, i) -> 
+  docs = xp[tool].docs()[0]
+  offset = width - tool.length - 1
+  offset2 = width - docs.length + 6
+  usage += '┃ ' + tool + padding.slice(0,offset) + '┃\n┃   ' + docs + padding.slice(0,offset2) + " ┃\n"
+  usage += "┃" + padding + "┃\n"  
+  
+
+usage = usage.substr(0,usage.length-5)
 
 # generate help based on argv._
 
-help.push "usage: xp ["+usage+"] [ options ]"
-help.push "options:"
+help.push chars['top-left'] + hr + chars['top-right']
 
-# generate default help 
-help.push "  -s, --silent   Silence stdout and stderr", "  -h, --help     Help", ""
+
+logo = "\
+┃"+" ##     ## ########".cyan+"                                       ┃\n" + "\
+┃"+"  ##   ##  ##     ##".cyan+"                                      ┃\n\
+┃"+"   ## ##   ##     ##".cyan+"                                      ┃\n\
+┃"+"    ###    ########".cyan+"                                       ┃\n\
+┃"+"   ## ##   ##".cyan+"                                             ┃\n\
+┃"+"  ##   ##  ##".cyan+"                                             ┃\n\
+┃"+" ##     ## ##".cyan + "   agile programming tools in Coffeescript".italic + "   ┃";
+                                        
+help.push logo
+
+
+help.push chars['left-mid'] + hr + chars['right-mid']
+
+
+help.push chars.left + padding + "┃\n┃ " + "installed tools".cyan.underline + "                                          ┃"
+help.push "┃" + padding + "┃"  
+help.push usage + " " + "  " + chars.right
+
+help.push chars['bottom-left'] + hr + chars['bottom-right']
+
+tools.forEach (tool, i) ->
+  try
+    # help.push tool.red + ' - ' + xp[tool].docs().join('\n')
+    # help.push "__________________________".grey
+  catch err
+    console.log err
+
 help = help.join '\n'
 
 # Show help prompt if requested or if the incorrect usage options are supplied
@@ -33,5 +92,9 @@ if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'unde
 xp[argv._[0]].exec argv, (err, result) -> 
   if err
     console.log('ERROR:'.red.bold + ' ' + err.message.grey)
-
+    console.log('usage:'.cyan + '\n')
+    console.log(xp[argv._[0]].usage().join('\n'))
+    return false
   console.log(result);
+
+

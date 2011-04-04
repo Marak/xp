@@ -1,5 +1,7 @@
+# TODO: implement tab formatting tool
 
-# White space removal tool
+# Formats tabbing in files
+
 
 util = require '../utils'
 eyes = require 'eyes'
@@ -9,7 +11,7 @@ exports.exec = (options, callback) ->
   file_count = 0
 
   if options._.length == 1
-    callback({ message: "File name, directory path, or GLOB is required"});
+    callback({ message: "File name, directory path, or glob is required"});
 
   # Cheating a bit for the async iteration here
   for glob in options._[1...]
@@ -40,15 +42,16 @@ exports.exec = (options, callback) ->
 
 exports.docs = () ->
   doc = []
-  doc.push 'removes excess whitespace from files'.grey
-  return doc        
-  
+  doc.push 'converts tabs to spaces and spaces to tabs'.grey
+  return doc
 
 exports.usage = () ->
+  
   usage = []
-  usage.push '  xp' + ' ws'.cyan + ' .'.grey
-  usage.push '  xp' + ' ws'.cyan + ' /path/to/file.txt'.grey
-  usage.push '  xp' + ' ws'.cyan + ' /path/to/dir/'.grey
-  usage.push '  xp' + ' ws'.cyan + ' /path/to/dir/*.txt'.grey
+  usage.push '  xp' + ' tabs'.cyan + ' .'.grey
+  usage.push '  xp' + ' tabs'.cyan + ' /path/to/file.txt'.grey
+  usage.push '  xp' + ' tabs'.cyan + ' /path/to/dir/'.grey
+  usage.push '  xp' + ' tabs'.cyan + ' /path/to/dir/*.txt'.grey
   usage.push ''
   return usage
+    
