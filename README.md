@@ -1,14 +1,14 @@
-     ##     ## ########                                       
+     ##     ## ######                                       
       ##   ##  ##     ##                                      
        ## ##   ##     ##                                      
-        ###    ########                                       
+        ##    ######                                       
        ## ##   ##                                             
       ##   ##  ##                                             
      ##     ## ##   agile programming tools in Coffeescript
 
 #v0.2.0
 
-#### Warning: This software is pre [SemVer](http://semver.org/) v1.0.0, use accordingly.
+### Warning: This software is pre [SemVer](http://semver.org/) v1.0.0, use accordingly.
 
 
 ## Features
@@ -40,7 +40,7 @@ If anyone is willing to write concise documentation for executing the functional
 # Tools
 
 
-### base64
+## base64
 base64 encoding tool 
 
 usage:
@@ -52,7 +52,7 @@ usage:
       -d, decodes string
 
 
-### imgur
+## imgur
 
 quick image sharing through imgur.com
 
@@ -60,7 +60,7 @@ usage:
 
     xp imgur /path/to/image.png
 
-### ip
+## ip
 
 determines public ip address of current machine 
 
@@ -68,7 +68,7 @@ usage:
 
     xp ip
 
-### loc
+## loc
 
 determines the amount of lines of code in files
 
@@ -79,7 +79,7 @@ usage:
     xp loc /path/to/dir/
     xp loc /path/to/dir/*.txt
 
-### pair
+## pair
 
 manages pair programming teams for Git   
 
@@ -122,7 +122,7 @@ examples:
 
      
 
-### tabs
+## tabs
 converts tabs to spaces and spaces to tabs
 
 usage:
@@ -133,7 +133,7 @@ usage:
     xp tabs /path/to/dir/*.txt
 
 
-### url
+## url
 
 url encoding / decoding tool  
 
@@ -145,7 +145,7 @@ usage:
 
       -d, decodes string
   
-### web
+## web
 spawns a static web server from directory paths
 
 usage:
@@ -159,7 +159,7 @@ usage:
       -p, port
 
 
-### ws
+## ws
 removes excess whitespace from files
 
 usage:
