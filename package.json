@@ -2,7 +2,7 @@
   "name": "xp",
   "description": "agile programming tools in Coffeescript",
   "keywords": ["xp", "agile", "programming", "git", "tools", "utility", "utilities", "tool", "coffeescript"],
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Marak Squires <marak.squires@gmail.com>",
   "contributors": ["Nicholas Kinsey <nicholas.kinsey@feistystudios.com>"],
   "repository": {
