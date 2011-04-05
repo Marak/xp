@@ -18,6 +18,7 @@
   - Cross platform 
   - Built in Node.js
   - Works on the command line or via node's module system
+
 ##  Installation
     [sudo] npm install xp
 
@@ -84,14 +85,43 @@ manages pair programming teams for Git
 
 usage:
 
-    xp pair 
-    xp pair ms cr
+    xp pair
+
+    flags:
+
+      -l, lists current team members
+      -a shorttag name, adds a member to your team
+      -d shortag, deletes a member from your team
+
+examples:
+
+**resets current team back to default git user**
+
+    xp pair
+
+**list current team members**
+
     xp pair -l
+
+**adds Marak Squires as "ms"**
+
     xp pair -a ms Marak Squires
-    xp pair -d
-    xp pair -e fooboo@gmail.com
+
+**adds Charlie Robbins as "cr"**
+
+    xp pair -a cr Charlie Robbins
+
+**pair up for commits**
+
+    xp pair ms cr
+
+**delete Marak Squires from team**
+
+    xp pair -d mr
+
 
      
+
 ### tabs
 converts tabs to spaces and spaces to tabs
 
@@ -142,7 +172,7 @@ usage:
 
 ## Using xp as a node.js module
 
-xp is primarily built to be used on the command line, but every xp tool can be programmatically accessed using require('xp'). 
+xp is primarily built to be used on the command line, but every xp tool can be programmatically accessed using require('xp').
 
 Here is an example of using the loc tool programmatically.
 
@@ -154,7 +184,7 @@ Here is an example of using the loc tool programmatically.
 
 ## Credits
 
-Original concept and idea by [Marak](https://github.com/marak) and [Fiesty Studios](https://github.com/feisty)
+Original concept and idea by [Marak](https://github.com/marak) and [Feisty Studios](https://github.com/feisty)
 
 [imgur](http://imgur.com) code from Jacob Chapel, [@Chapel](https://github.com/chapel)
 
@@ -164,6 +194,6 @@ pair code from Nicholas Kinsey [@pyrotechnick](https://github.com/pyrotechnick)
 
 [node-static](http://github.com/cloudhead/node-static) web server by Alexis Sellier [@cloudhead](https://github.com/cloudhead)
 
-
+configurations with nConf by Charlie Robbins [@indexzero](http://github.com/indexzero/nconf)
 
 [Coffeescript](http://Coffeescript.com) by Jeremy Ashkenas [@jashkenas](https://github.com/jashkenas)

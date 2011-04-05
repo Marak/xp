@@ -4,6 +4,7 @@ eyes = require 'eyes'
 xp     = require '../lib/xp'
 colors = require 'colors'
 utils  = require '../lib/utils'
+nconf  = require 'nconf'
 
 # parse command line arguments with optimist
 argv = (require 'optimist').argv
@@ -88,13 +89,15 @@ if (argv.h || argv.help || (argv._.length == 0) || typeof xp[argv._[0]] == 'unde
   console.log help
   return
 
-# execute tool
-xp[argv._[0]].exec argv, (err, result) -> 
+# Execute tool
+xp.exec argv._[0], argv, (err, result) -> 
   if err
     console.log('ERROR:'.red.bold + ' ' + err.message.grey)
     console.log('usage:'.cyan + '\n')
     console.log(xp[argv._[0]].usage().join('\n'))
     return false
   console.log(result);
+
+
 
 
