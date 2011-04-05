@@ -6,7 +6,7 @@
       ##   ##  ##                                             
      ##     ## ##   agile programming tools in Coffeescript
 
-#v0.2.1
+#v0.2.2
 
 ### Warning: This software is pre [SemVer](http://semver.org/) v1.0.0, use accordingly.
 
