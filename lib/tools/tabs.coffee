@@ -7,8 +7,17 @@ util = require '../utils'
 eyes = require 'eyes'
 fs   = require 'fs'
 
+# TODO: make this configurable
+# right now, the replacement is hard-coded to replace "hard tabs" with "soft tabs, two spaces"
+config = {
+  tab_identifier: /\t/g,
+  tab_replacement: '  '
+}
+
+
 exports.exec = (options, callback) ->
   file_count = 0
+  tab_instances = 0
 
   if options._.length == 1
     callback({ message: "File name, directory path, or glob is required"});
@@ -31,12 +40,13 @@ exports.exec = (options, callback) ->
         # Process the file's contents and then re-save it
         # Regex by Fedor Induty 
         # I've got to assume there are bugs in this Regex, we made it quickly
-        stripped = data.toString().replace(/(^|\r|\n|\r\n)+\s+(\r|\n|\r\n|$)+/g,'$1$2').replace(/(\r|\n\n|\r\n\n)+/g, '$1')
+        tab_instances += data.toString().split('\t').length
+        stripped = data.toString().replace(config.tab_identifier, config.tab_replacement)
 
         fs.writeFile v, stripped, (err, result) ->
           file_count = file_count - 1
           if file_count == 0
-            callback null, 'Stripped'
+            callback null, { "Tabs Replaced": tab_instances, "Files Modified": util.paths(glob).length }
 
       )(v,i)
 
