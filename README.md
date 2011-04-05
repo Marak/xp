@@ -139,7 +139,7 @@ url encoding / decoding tool
 
 usage:
 
-    xp base64 string
+    xp url string
 
     flags:
 
