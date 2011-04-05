@@ -169,19 +169,6 @@ usage:
     xp ws /path/to/dir/
     xp ws /path/to/dir/*.txt
 
-
-## Using xp as a node.js module
-
-xp is primarily built to be used on the command line, but every xp tool can be programmatically accessed using require('xp').
-
-Here is an example of using the loc tool programmatically.
-
-    var require('xp');
-
-    xp.loc('./path/toFiles/', function(err, result){
-      console.log(result);
-    });
-
 ## Credits
 
 Original concept and idea by [Marak](https://github.com/marak) and [Feisty Studios](https://github.com/feisty)
