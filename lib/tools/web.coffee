@@ -36,7 +36,7 @@ exports.docs = () ->
 exports.usage = () ->
   doc = []
   doc.push 'usage '.green
-  doc.push '  static ' + './path/to/folder/'
+  doc.push '  web ' + './path/to/folder/'
 
   return doc  
   

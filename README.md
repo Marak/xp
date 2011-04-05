@@ -1,12 +1,27 @@
-# xp
-## a command line agile development tool built in CoffeeScript and node.js
+     ##     ## ########                                       
+      ##   ##  ##     ##                                      
+       ## ##   ##     ##                                      
+        ###    ########                                       
+       ## ##   ##                                             
+      ##   ##  ##                                             
+     ##     ## ##   agile programming tools in Coffeescript
 
-# Warning: This is unreleased software.
+#v0.2.0
 
-#  INSTALLATION
-  npm install xp
+#### Warning: This software is pre [SemVer](http://semver.org/) v1.0.0, use accordingly.
 
-#  USAGE
+
+## Features
+  - (8) built in tools for getting agile
+  - Pluggable tool engine allows for easy creation of new tools
+  - Written in CoffeeScript
+  - Cross platform 
+  - Built in Node.js
+  - Works on the command line or via node's module system
+##  Installation
+    [sudo] npm install xp
+
+##  Usage
     xp [tool] [options]
 
 ## Getting Help
@@ -15,33 +30,140 @@
     xp -help
     xp --help
 
-# TOOLS
+## Warning: Violations of the <a href="http://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a> ahead
 
-## pair - Pair Programing tools for source control commit messages
+You might notice that a lot of xp's "tools" already exist in some form or another as \*nix programs or combination of \*nix programs. \*nix has battle hardened programs which have been heavily used, tested, optimized, and are generally of very high quality. **xp doesn't aim to replace these any of these.** xp is a *convenience* library aimed towards non-expert users. xp uses [CoffeeScript](http://coffeescript.com) and [node](http://nodejs.org), which makes it fun to use. **If you already know how to perform these actions via vanilla \*nix tools, I encourage you to continue to do so.** 
 
-### Set Pair Programming team
+If anyone is willing to write concise documentation for executing the functionality of xp's tools using only pre-existing \*nix commands, I would be very glad to add that information to this document.
 
-    xp pair nr nk
-( pairs are currently hard-coded in pair.coffee)
+# Tools
 
-### Reset to default user
 
-    xp pair
+### base64
+base64 encoding tool 
 
-## loc - Lines of Code
+usage:
 
-    xp loc [glob]
+    xp base64 string
+
+    flags:
+
+      -d, decodes string
+
+
+### imgur
+
+quick image sharing through imgur.com
+
+usage:
+
+    xp imgur /path/to/image.png
+
+### ip
+
+determines public ip address of current machine 
+
+usage:
+
+    xp ip
+
+### loc
+
+determines the amount of lines of code in files
+
+usage:
+
     xp loc .
-    xp loc ../
-    xp loc ./foo
+    xp loc /path/to/file.txt
+    xp loc /path/to/dir/
+    xp loc /path/to/dir/*.txt
 
-## ws - White space / empty line removal 
+### pair
 
-    xp ws [glob]
+manages pair programming teams for Git   
+
+usage:
+
+    xp pair 
+    xp pair ms cr
+    xp pair -l
+    xp pair -a ms Marak Squires
+    xp pair -d
+    xp pair -e fooboo@gmail.com
+
+     
+### tabs
+converts tabs to spaces and spaces to tabs
+
+usage:
+
+    xp tabs .
+    xp tabs /path/to/file.txt
+    xp tabs /path/to/dir/
+    xp tabs /path/to/dir/*.txt
+
+
+### url
+
+url encoding / decoding tool  
+
+usage:
+
+    xp base64 string
+
+    flags:
+
+      -d, decodes string
+  
+### web
+spawns a static web server from directory paths
+
+usage:
+     
+    xp web
+    xp web ./path/to/webroot
+    xp web -p 8081
+
+    flags:
+
+      -p, port
+
+
+### ws
+removes excess whitespace from files
+
+usage:
+
     xp ws .
-    xp ws ../
-    xp ws ./foo
+    xp ws /path/to/file.txt
+    xp ws /path/to/dir/
+    xp ws /path/to/dir/*.txt
 
-## Authors
 
-Marak Squires, Feisty Studios
+## Using xp as a node.js module
+
+xp is primarily built to be used on the command line, but every xp tool can be programmatically accessed using require('xp'). 
+
+Here is an example of using the loc tool programmatically.
+
+    var require('xp');
+
+    xp.loc('./path/toFiles/', function(err, result){
+      console.log(result);
+    });
+
+## Credits
+
+Original concept and idea by [Marak](https://github.com/marak) and [Fiesty Studios](https://github.com/feisty)
+
+[imgur](http://imgur.com) code from Jacob Chapel, [@Chapel](https://github.com/chapel)
+
+ws code by Fedor Induty [@donnerjack13589](https://github.com/donnerjack13589)
+
+pair code from Nicholas Kinsey [@pyrotechnick](https://github.com/pyrotechnick)
+
+[node-static](http://github.com/cloudhead/node-static) web server by Alexis Sellier [@cloudhead](https://github.com/cloudhead)
+
+
+
+[Coffeescript](http://Coffeescript.com) by Jeremy Ashkenas [@jashkenas](https://github.com/jashkenas)

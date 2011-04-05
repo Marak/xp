@@ -17,9 +17,11 @@ exports.exec = (options, callback) ->
     # API Key is currently hard-coded, API keys are free
     request = client.request('POST', '/2/upload.json?key=42e1c4982b52fabcae9033ff428d5175', {
       'Host':'api.imgur.com',
-      'Content-Type': 'image/png',
       'Transfer-Encoding': 'chunked'
     })
+
+    # I left out the "Content-Type" header, imgur doesn't seem to mind
+    # a better solution would be to do a simple mime-type lookup based on the file extension
 
     request.on 'response', (response) -> 
       result = ''
