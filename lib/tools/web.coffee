@@ -1,13 +1,12 @@
 # Base64 encode / decode tool
 
 utils = require '../utils'
-static = require 'node-static'
+static = require '../../vendor/node-static/lib/node-static'
 http   = require 'http'
 exports.exec = (options, callback) ->
 
   options.p = options.p || 8080
-  root = options._[1] || __dirname
-  console.log root
+  root = options._[1] || '.'
   file = new(static.Server)(root, { AutoIndex: true, cache: 3600 });
   console.log 'Starting up static web server for: '.yellow + root.cyan + ' on port: '.yellow + options.p.toString().cyan
   
